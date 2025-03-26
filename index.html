@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>i love u mostest</title>
+  <title>how much i love u mostest</title>
   <style>
     body {
       margin: 0;
@@ -90,7 +90,7 @@
   <div id="linkContainer"></div>
   
   <script>
-    // Contents array with relative paths (from your "images" folder)
+    // New contents array with the new messages and file names exactly as provided.
     const contents = [
       { message: "hi.", image:"717881928.090711.jpeg" },
       { message: "bye.", image:"images/FullSizeRender.jpeg" },
@@ -111,15 +111,17 @@
       { message: "hahahaha.", image:"images/IMG_8543.jpeg" },
       { message: "skskskk.", image:"images/IMG_9821.jpeg" },
       { message: "yurrr.", image:"images/IMG_9850.jpeg" },
-      { message: "I love how you don’t mind teaching me the most basic of things - and sharing all of YOUR passions so they can become OURS.", image:"images/Screenshot_20250309-170420.png" },
-      { message: "I love how hard-working and diligent you are. You’ve inspired me to work harder and do things even when I don’t feel like it.", image:"images/Screenshot_20250309-170452.png" },
-      { message: "I love how giving you are and how you share things with me. Nobody’s ever done that before.", image:"images/Screenshot_20250309-170554.png" },
-      { message: "You’ve been my first for so many things - and I wouldn’t have it be any other way.", image:"images/Screenshot_20250309-170709.png" },
-      { message: "We can get excited for each other even though it may have nothing to do with us, and I feel like that’s so special.", image:"images/Screenshot_20250309-170618.png" },
-      { message: "I can’t thank you enough for always being honest and transparent with me. With how dense I am, it’s beyond helpful and it matters so much to me that we can have those conversations.", image:"images/Screenshot_20250309-170732.png" },
-      { message: "I love how you laugh with me instead of at me. And even when you laugh at me, I can laugh too.", image:"images/Screenshot_20250309-170832.png" },
-      { message: "You love me more than anyone else ever has, and I want to show appreciation for that every day.", image:"images/IMG_20250312_1606032.png" },
-      { message: "I love you more than anything I could even dream of. There’s nobody better I could imagine by my side - and I hope that I can make you feel special each and every day.", image:"images/Img_2025_03_13_05_47_18.png" }
+      { message: "yurrr.", image:"images/IMG_9850.jpeg" },
+      { message: "yurrr.", image:"images/IMG_9850.jpeg" },
+      { message: "yurrr.", image:"images/IMG_9850.jpeg" },
+      { message: "yurrr.", image:"images/IMG_9850.jpeg" },
+      { message: "yurrr.", image:"images/IMG_9850.jpeg" },
+      { message: "yurrr.", image:"images/IMG_9850.jpeg" },
+      { message: "yurrr.", image:"images/IMG_9850.jpeg" },
+      { message: "yurrr.", image:"images/IMG_9850.jpeg" },
+      { message: "yurrr.", image:"images/IMG_9850.jpeg" },
+      { message: "yurrr.", image:"images/IMG_9850.jpeg" },
+      { message: "yurrr.", image:"images/IMG_9850.jpeg" }
     ];
     
     // History array to track the last 10 indices
@@ -150,6 +152,7 @@
       }
       const content = contents[randomIndex];
       messageEl.textContent = content.message;
+      imageEl.style.display = 'block';  // Reset the image element's display property.
       imageEl.src = content.image;
       linkContainer.textContent = content.link || "";
     }
