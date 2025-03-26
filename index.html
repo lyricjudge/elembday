@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>how much i love u</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: "Times New Roman";
+      background: #333;
+      color: #FFF;
+    }
+    #message {
+      font-size: 36px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    img {
+      max-width: 300px;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    /* A copy-friendly container for the link */
+    #linkContainer {
+      font-size: 16px;
+      background: #444;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: text;
+      user-select: all;
+    }
+  </style>
+  
+  <!-- Additional Style Block: Make images twice the size -->
+  <style>
+    img {
+      max-width: 450px !important;
+    }
+  </style>
+  
+  <!-- Additional CSS snippet -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Times New Roman";
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-image 0.5s ease-in-out;
+    }
+    #message {
+      font-size: 50px;
+      color: #FFF;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+  
+  <!-- New CSS rule to hide empty link container -->
+  <style>
+    #linkContainer:empty {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- The image is displayed as a normal inline element -->
+  <img id="messageImage" src="" alt="" onerror="handleImageError(this)">
+  <!-- Text message displayed below the image -->
+  <div id="message"></div>
+  <!-- Link container element -->
+  <div id="linkContainer"></div>
+  
+  <script>
+    // Contents array with relative paths (from your "images" folder)
+    const contents = [
+      { message: "I love your style.", image:"images/PXL_20241118_1830555472.jpg" },
+      { message: "I love your voice, your eyes, and your smile.", image:"images/PXL_20241121_2357474532.jpg" },
+      { message: "I love how you want the best for me.", image:"images/Screenshot_20241116-1530412.png" },
+      { message: "I love how open minded and caring you are.", image:"images/Screenshot_20241116-1947052.png" },
+      { message: "I love how patient you are with me and how understanding of a person you are.", image:"images/Screenshot_20241215-1859562.png" },
+      { message: "I love your willingness to put up with me and your eagerness to have fun with me.", image:"images/Screenshot_20250121-2042472.png" },
+      { message: "I love your mind and how it works. You always have the best ideas.", image:"images/Screenshot_20250205-0752582.png" },
+      { message: "I love how you’re always right - and your tolerance with how wrong I can be sometimes.", image:"images/Screenshot_20250209-144445.png" },
+      { message: "I love how you’re not ever embarrassed to be yourself. Seeing you be vulnerable makes me comfortable to do the same. You’ve helped me be myself more, too.", image:"images/Screenshot_20250211-2146322.png" },
+      { message: "I love how independent you are. It helps remind me of how strong I can be and what potential I have.", image:"images/Screenshot_20250214-0530212.png" },
+      { message: "I love the fun we have together. We have the best conversations that I’ll never forget.", image:"images/Screenshot_20250216-2203232.png" },
+      { message: "I’m so happy that I’ve grown into a better person for you, and you’ve been there with me for every step.", image:"images/Screenshot_20250221-0539092.png" },
+      { message: "I love how you’ll defend me, even if I won’t defend myself.", image:"images/Screenshot_20250221-1600142.png" },
+      { message: "You’ve made me more confident in my body, my mind, and my heart, than I’ve ever been in my life.", image:"images/Screenshot_20250227-2147592.png" },
+      { message: "I love how you can forgive me for my mistakes, because people rarely do.", image:"images/Screenshot_20250302-2108472.png" },
+      { message: "I love how you make me feel comfortable being weird and nerdy with you. I’ve never been able to do that before and it means the world to me.", image:"images/Screenshot_20250303-1022352.png" },
+      { message: "I love how you listen to me even when there’s so many other people talking to you and things going on. It makes me feel really special and heard.", image:"images/Screenshot_20250307-2114012.png" },
+      { message: "I love how I can talk forever and you’ll pay attention to every word.", image:"images/Screenshot_20250308-202330.png" },
+      { message: "I’m so happy that you’ve worked through everything with me and you’ve never given up on us.", image:"images/Screenshot_20250309-165409.png" },
+      { message: "I love how you don’t mind teaching me the most basic of things - and sharing all of YOUR passions so they can become OURS.", image:"images/Screenshot_20250309-170420.png" },
+      { message: "I love how hard-working and diligent you are. You’ve inspired me to work harder and do things even when I don’t feel like it.", image:"images/Screenshot_20250309-170452.png" },
+      { message: "I love how giving you are and how you share things with me. Nobody’s ever done that before.", image:"images/Screenshot_20250309-170554.png" },
+      { message: "You’ve been my first for so many things - and I wouldn’t have it be any other way.", image:"images/Screenshot_20250309-170709.png" },
+      { message: "We can get excited for each other even though it may have nothing to do with us, and I feel like that’s so special.", image:"images/Screenshot_20250309-170618.png" },
+      { message: "I can’t thank you enough for always being honest and transparent with me. With how dense I am, it’s beyond helpful and it matters so much to me that we can have those conversations.", image:"images/Screenshot_20250309-170732.png" },
+      { message: "I love how you laugh with me instead of at me. And even when you laugh at me, I can laugh too.", image:"images/Screenshot_20250309-170832.png" },
+      { message: "You love me more than anyone else ever has, and I want to show appreciation for that every day.", image:"images/IMG_20250312_1606032.png" },
+      { message: "I love you more than anything I could even dream of. There’s nobody better I could imagine by my side - and I hope that I can make you feel special each and every day.", image:"images/Img_2025_03_13_05_47_18.png" }
+    ];
+    
+    // History array to track the last 10 indices
+    let history = [];
+    
+    const messageEl = document.getElementById("message");
+    const imageEl = document.getElementById("messageImage");
+    const linkContainer = document.getElementById("linkContainer");
+    
+    // Function to set random content ensuring no repeats within the last 10 clicks.
+    function setRandomContent() {
+      const allowed = [];
+      for (let i = 0; i < contents.length; i++) {
+        if (!history.includes(i)) {
+          allowed.push(i);
+        }
+      }
+      if (allowed.length === 0) {
+        history = [];
+        for (let i = 0; i < contents.length; i++) {
+          allowed.push(i);
+        }
+      }
+      const randomIndex = allowed[Math.floor(Math.random() * allowed.length)];
+      history.push(randomIndex);
+      if (history.length > 10) {
+        history.shift();
+      }
+      const content = contents[randomIndex];
+      messageEl.textContent = content.message;
+      imageEl.src = content.image;
+      linkContainer.textContent = content.link || "";
+    }
+    
+    // Initialize content.
+    setRandomContent();
+    
+    // Change content when the message or image is clicked.
+    messageEl.addEventListener("click", setRandomContent);
+    imageEl.addEventListener("click", setRandomContent);
+    
+    // Set a static background image.
+    document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1530533718754-001d2668365a?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFyayUyMGJsdWV8ZW58MHx8MHx8fDA%3D')";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundPosition = "center";
+    document.body.style.backgroundRepeat = "no-repeat";
+  </script>
+  
+  <!-- Additional JS snippet: handleImageError function -->
+  <script>
+    function handleImageError(imageElement) {
+      imageElement.style.display = 'none';
+      // Optionally, replace with a placeholder image:
+      // imageElement.src = 'https://via.placeholder.com/300';
+    }
+  </script>
+</body>
+</html>
